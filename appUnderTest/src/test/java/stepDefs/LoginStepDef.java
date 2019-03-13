@@ -17,7 +17,7 @@ public class LoginStepDef extends CommonStepDef {
     }
 
 
-    @Given("^Click on Sign in on index page$")
+    @Given("^User click on Sign in on index page$")
     public void click_on_Sign_in_on_index_page() {
         navigateToUrl();
         loginPage.clickOnSignIn();
@@ -38,13 +38,12 @@ public class LoginStepDef extends CommonStepDef {
         loginPage.clickSignInButton();
     }
 
-    @Given("^User logged in to the application$")
-    public void user_logged_in_to_the_application()  {
-        navigateToUrl();
+    @When("^Log in to the application with user \"([^\"]*)\" with password \"([^\"]*)\"$")
+    public void user_logged_in_to_the_application(String username, String password)  {
         loginPage.clickOnSignIn();
-        enter_username_as("a@a.com");
-        enter_password_as("12345");
-        user_should_be_logged_in();
+        loginPage.enterEmail(username);
+        loginPage.enterPasssword(password);
+        loginPage.clickSignInButton();
     }
 
 }
