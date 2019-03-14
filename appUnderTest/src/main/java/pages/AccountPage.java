@@ -43,6 +43,37 @@ public class AccountPage extends AbstractPage<AccountPage> {
     @FindBy(css="p[class*='alert-success']")
     public WebElement successInfoSavedMessage;
 
+    @FindBY(id="block_top_menu")
+    public WebElement topNavigationBar;
+
+    @FindBy(css="a[title='Add to cart']")
+     public WebElement addtoCartInitial;	
+
+
+
+    @FindBy(css="a[title='Proceed to checkout']")
+     public WebElement proceedToCheckOutPopUp;	
+
+    
+    @FindBy(css="p[class*='cart_navigation'] a[title='Proceed to checkout']")
+     public WebElement proceedToCheckOutSummary;	
+
+	@FindBy(css="button[name='processAddress']")
+     public WebElement proceedToCheckOutAddress;
+
+	@FindBy(id='cgv')
+	public WebElement agreeCheckBox;
+
+   @FindBy(css="button[name='processCarrier']")
+	public WebElement proceedToShipping;
+
+   @FindBy(id="total_price")
+	public WebElement totalPrice;
+
+   		
+ 
+   public static String totalPriceValue;
+
     public static String firstName = null;
 
     public static final String PASSWORD = "12345";
@@ -90,4 +121,54 @@ public class AccountPage extends AbstractPage<AccountPage> {
         return successInfoSavedMessage.getText();
 
     }
+
+	
+
+
+
+	//This is to divide into other pages
+
+	public void clickTabOnNavigation(String category){
+	
+		List<String> list =  topNavigationBar.findElements(By.tagName("li"));
+
+	for(int i=0; i<= list.size(); i++){
+		if(list[i].getText = category){
+		list[i].click();
+	}
+		}
+	
+	}	
+	
+
+public void initialAddToCart(){
+        Controllers.button.click(addtoCartInitial);
+    }
+
+public void proceedOnPopUp(){
+        Controllers.button.click(proceedToCheckOutPopUp);
+    }
+
+public void proceedOnSummary(){
+        Controllers.button.click(proceedToCheckOutSummary);
+    }
+
+public void proceedOnAddress(){
+        Controllers.button.click(proceedToCheckOutAddress);
+    }
+public void checkAgreeCheckBox(){
+	agreeCheckBox.click();	
+
+}
+
+public void proceedOnShipping(){
+        Controllers.button.click(proceedToShipping);
+    }
+
+public String getTotalPrice(){
+	totalPriceValue = totalPrice.getText()
+	return totalPriceValue; 
+}
+
+
 }
