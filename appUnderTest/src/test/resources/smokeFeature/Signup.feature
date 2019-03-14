@@ -23,7 +23,5 @@ Feature: Complete Order of T-Shirt
     And User notice the amount as "$18.51" and select "bankwire"
     And User navigate back to orders after confirming the order on Payment page
     Then Following details should be displayed
-		|Order reference| <reference>|
-		|Date|<current Date>|
-		|Total price|"$18.51"|
-		|Status|On backorder|	
+		|Order reference|Date         |Total price|Status        |	
+		|KIRUQUCYQ	|<currentDate>|"$18.51"   |On backorder  |      
