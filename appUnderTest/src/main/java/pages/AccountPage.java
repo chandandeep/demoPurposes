@@ -70,11 +70,23 @@ public class AccountPage extends AbstractPage<AccountPage> {
    @FindBy(id="total_price")
 	public WebElement totalPrice;
 
-   		
+	@FindBy(class="bankwire")
+	public WebElement bankWirePayment;
+	
+	@FindBy(class="cheque")
+	public WebElement chequePayment;
+	
+	@FindBy(css="p[class*='cart_navigation'] button[type='submit']")
+	public WebElement confirmOnPaymentButton;
+
+	@FindBy(css="div[class='box'] br")	
+	public List<WebElement> boxTextList;
  
    public static String totalPriceValue;
 
     public static String firstName = null;
+	
+	public static List<String> textInBox;
 
     public static final String PASSWORD = "12345";
 
@@ -170,5 +182,28 @@ public String getTotalPrice(){
 	return totalPriceValue; 
 }
 
+public void payAmount(String paymentMethod){
+	if(method=="bankwire"){
+	Controllers.button.click(bankWirePayment);
+	}
+	else{
+	Controllers.button.click(chequePayment);	
+}
+
+public void confirmOnPayment(){
+	Controllers.button.click(confirmOnPaymentButton);
+}
+
+
+public static List<String> getDataFromBox(){
+		int size = boxTextList.size();
+		
+		for(int i = 0; i<=size; i++){
+			textInBox.add(boxTextList.get(i).getText())
+		}
+	
+	return textInBox;
+	
+	}
 
 }
